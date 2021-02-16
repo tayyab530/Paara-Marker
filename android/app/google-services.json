@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "168426289607",
+    "project_id": "paara-marker",
+    "storage_bucket": "paara-marker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168426289607:android:5dd9c01d5a436aa90d41e2",
+        "android_client_info": {
+          "package_name": "com.example.Paara_Marker_with_rules"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168426289607-t9lti5q5emolil15jjp9pese5aldogqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6if6PNnO2AnxF7Riql22fFLZPzH_cadk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168426289607-t9lti5q5emolil15jjp9pese5aldogqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
