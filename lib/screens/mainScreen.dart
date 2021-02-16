@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final _mediaQuery = MediaQuery.of(context);
-
+    
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
