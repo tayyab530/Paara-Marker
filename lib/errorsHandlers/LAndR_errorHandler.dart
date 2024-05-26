@@ -19,14 +19,14 @@ Future<dynamic> regErrorPopUp(BuildContext context,String error) {
               title: Text("Error! "),
               content: Text("$error"),
               actions: [
-                FlatButton(
+                TextButton(
                   onPressed: () => Navigator.of(context).pop(),
                   child: Text('Cancel'),
                 ),
-                FlatButton(
+                TextButton(
                   onPressed: () => Navigator.pushNamed(context, '/log'),
                   child: Text('Go to Login'),
-                  color: Colors.grey[800],
+                  style: TextButton.styleFrom(backgroundColor: Colors.grey[800]),
                 ),
               ],
             );
@@ -55,14 +55,14 @@ Future<dynamic> loginErrorPopUp(BuildContext context,String error) {
               title: Text("Error! "),
               content: Text("$error"),
               actions: [
-                FlatButton(
+                TextButton(
                   onPressed: () => Navigator.of(context).pop(),
                   child: Text('Close'),
                 ),
-                FlatButton(
+                TextButton(
                   onPressed: () => Navigator.pushNamed(context, '/reg'),
                   child: Text('Go to Register'),
-                  color: Colors.grey[800],
+                  style: TextButton.styleFrom(backgroundColor: Colors.grey[800]),
                 ),
               ],
             );

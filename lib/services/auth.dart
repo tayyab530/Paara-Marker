@@ -4,34 +4,29 @@ final auth = AuthService();
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  User user;
-  String _errorMessage;
+  User? user;
+  late String _errorMessage;
   // ignore: missing_return
-  Future<User> registerWithEandP(String email, String password) async {
+  Future<User?> registerWithEandP(String email, String password) async {
     try {
       final result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
           _auth.currentUser;
-      if (result != null) {
         return result.user;
-      }
     } on FirebaseAuthException catch (e) {
-      _errorMessage = e.message;
+      _errorMessage = e.message.toString();
       return null;
     }
   }
 
   // ignore: missing_return
-  Future<User> loginWithEandP(String email, String password) async {
+  Future<User?> loginWithEandP(String email, String password) async {
     try {
       final result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-
-      if (result != null) {
         return result.user;
-      }
     } on FirebaseAuthException catch (e) {
-      _errorMessage = e.message;
+      _errorMessage = e.message!;
       return null;
     }
     
@@ -43,12 +38,12 @@ class AuthService {
 
   String getError() => _errorMessage;
 
-  String getCurrentUserId() => _auth.currentUser.uid;
+  String getCurrentUserId() => _auth.currentUser!.uid;
 
-  User isLogedIn(){
-    User _user = _auth.currentUser;
-    var temp = _auth.authStateChanges();
-    temp.listen((event) { _user = event;});
+  User? isLogedIn(){
+    User? _user = _auth.currentUser;
+    // var temp = _auth.authStateChanges();
+    // temp.listen((event) { _user = event!;});
     return _user; 
   }
   

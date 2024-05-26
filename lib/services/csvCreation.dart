@@ -1,15 +1,15 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:csv/csv.dart';
-import 'package:simple_permissions/simple_permissions.dart';
-import 'package:device_info/device_info.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class CreateCSV {
 
   
   
-  String filePath;
+  late String filePath;
 
   Future<int> getcsv(int index) async {
     var version;
@@ -36,7 +36,7 @@ class CreateCSV {
       version = iosInfo.systemVersion;
     }
 
-    List<List<dynamic>> rows = List<List<dynamic>>();
+    List<List<dynamic>> rows = <List<List<dynamic>>>[];
 
     var cloud = await FirebaseFirestore.instance
         .collection("Quran $index")
@@ -51,7 +51,7 @@ class CreateCSV {
 
     if (cloud.docs != null) {
       for (int i = 0; i < cloud.size; i++) {
-        List<dynamic> row = List<dynamic>();
+        List<dynamic> row = <List<dynamic>>[];
         
         row.add(cloud.docs[i]['ID']);
         row.add(cloud.docs[i]['taker']);
@@ -67,11 +67,11 @@ class CreateCSV {
       }
     }
     
-    var permission = await SimplePermissions.requestPermission(Permission.WriteExternalStorage);
+    var permission = await Permission.manageExternalStorage.request();
 
     String dir;
 
-    if(PermissionStatus.authorized == permission){
+    if(PermissionStatus.granted == permission){
       if(Platform.isAndroid){  
         dir = '/storage/emulated/0/Download/';
       }

@@ -26,21 +26,32 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 33
+
+    namespace "com.example.Paara_Marker"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-    lintOptions {
-        disable 'InvalidPackage'
-    }
+//    lintOptions {
+//        disable 'InvalidPackage'
+//    }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.Paara_Marker_with_rules"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -52,6 +63,23 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+//    flavorDimensions "flavor"
+//
+//    productFlavors {
+//        staging {
+//            dimension "flavor"
+//        }
+//    }
+
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_17
+//        targetCompatibility JavaVersion.VERSION_17
+//    }
+//
+//    kotlinOptions {
+//        jvmTarget=17
+//    }
 }
 
 flutter {
@@ -63,6 +91,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:26.2.0')
 
     implementation 'com.google.firebase:firebase-database'
+//    implementation "androidx.multidex:multidex:2.0.1"
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -12,8 +12,8 @@ class TabsBar extends StatefulWidget {
 }
 
 class _TabsBarState extends State<TabsBar> with SingleTickerProviderStateMixin {
-  TabController _tabController;
-  BuildContext scaffoldContext;
+  late TabController _tabController;
+  BuildContext? scaffoldContext;
 
   @override
   void initState() {
@@ -39,7 +39,7 @@ class _TabsBarState extends State<TabsBar> with SingleTickerProviderStateMixin {
               builder: (ctx, AsyncSnapshot<bool> snapshot) {
                 if(snapshot.data == null)
                   return Container();
-                return DropDown(snapshot.data,ctx);
+                return DropDown(snapshot.data!,ctx);
               },
             ),
           ],

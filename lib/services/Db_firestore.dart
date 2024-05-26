@@ -9,7 +9,7 @@ class DbProvider {
     'completed': false,
     'uid': ''
   };
-  String userName;
+  String? userName;
 
   DbProvider() {
     firebase.enableNetwork();
@@ -50,7 +50,7 @@ class DbProvider {
         .update({"uid": id});
   }
 
-  Future<String> getUserName() async {
+  Future<String?> getUserName() async {
     if (userName != null) return Future.value(userName);
 
     final list = await firebase.collection('usernames').get();
