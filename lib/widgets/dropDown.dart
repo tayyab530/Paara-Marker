@@ -36,7 +36,7 @@ class DropDown extends StatelessWidget {
         } else if (value == 'Reset Data') {
           resetDataPopUp(context);
         } else if (value == 'Download Sheet') {
-          Scaffold.of(context).showSnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('Downloading sheet...'),
               duration: Duration(seconds: 2),
@@ -86,8 +86,8 @@ class DropDown extends StatelessWidget {
                 return AlertDialog(
                   title: Text('Data is reset succesfully!'),
                   actions: [
-                    RaisedButton(
-                      color: Colors.grey[850],
+                    ElevatedButton(
+                      style: TextButton.styleFrom(backgroundColor: Colors.grey[850]),
                       onPressed: () => Navigator.of(context).pop(),
                       child: Text('OK'),
                     ),

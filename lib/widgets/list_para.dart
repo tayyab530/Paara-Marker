@@ -12,11 +12,11 @@ class ListOfPara extends StatelessWidget {
     
     return FutureBuilder(
       future: db.getUserName(),
-      builder: (futureCtx, AsyncSnapshot<String> futureSnapshot) {
+      builder: (futureCtx, AsyncSnapshot<String?> futureSnapshot) {
         if (futureSnapshot.connectionState == ConnectionState.waiting)
           return Center(child: CircularProgressIndicator());
           
-        return StreamBuilder(
+        return StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance
                 .collection(collectionName)
                 .orderBy('ID')
@@ -30,9 +30,9 @@ class ListOfPara extends StatelessWidget {
               else
                 return ListView.builder(
                   padding: EdgeInsets.all(10.0),
-                  itemCount: snapshot.data.docs.length,
+                  itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, int index) {
-                    var item = snapshot.data.docs[index];
+                    var item = snapshot.data!.docs[index];
 
                     return Column(
                       children: [
@@ -94,17 +94,17 @@ class ListOfPara extends StatelessWidget {
                                                     auth.getCurrentUserId() ==
                                                         item["uid"])) {
                                               db.updateDocumentForTaken(
-                                                  collectionName, index, value);
-                                              value
+                                                  collectionName, index, value!);
+                                              value!
                                                   ? db.updateDocumentForTaker(
                                                       collectionName,
                                                       index,
-                                                      futureSnapshot.data)
+                                                      futureSnapshot.data!)
                                                   : db.updateDocumentForTaker(
                                                       collectionName,
                                                       index,
                                                       'None');
-                                              value
+                                              value!
                                                   ? db.updateDocumentForTakerUid(
                                                       collectionName,
                                                       index,
@@ -129,7 +129,7 @@ class ListOfPara extends StatelessWidget {
                                                 auth.getCurrentUserId() ==
                                                     item['uid']) {
                                               db.updateDocumentForCompl(
-                                                  collectionName, index, value);
+                                                  collectionName, index, value!);
                                             }
                                           },
                                           activeColor: Colors.red,

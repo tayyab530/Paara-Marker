@@ -10,8 +10,8 @@ class RegiterationScreen extends StatelessWidget {
   final DbProvider db = DbProvider();
 
   Widget build(BuildContext context) {
-    return WillPopScope(
-        onWillPop: ()async=> false,
+    return PopScope(
+        onPopInvoked: (_)=> false,
           child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -53,7 +53,7 @@ class RegiterationScreen extends StatelessWidget {
                 border: InputBorder.none,
                 labelText: 'Email Address',
                 hintText: 'you@example.com',
-                errorText: snapshot.hasError ? snapshot.error : '',
+                errorText: snapshot.hasError ? snapshot.error.toString() : '',
                 errorStyle: TextStyle(color: Colors.blueGrey),
               ),
               onChanged: bloc.changeEmail,
@@ -92,7 +92,7 @@ class RegiterationScreen extends StatelessWidget {
                 border: InputBorder.none,
                 labelText: 'User Name',
                 hintText: 'e.g. Fahad',
-                errorText: snapshot.hasError ? snapshot.error : '',
+                errorText: snapshot.hasError ? snapshot.error.toString() : '',
                 errorStyle: TextStyle(color: Colors.blueGrey),
               ),
               onChanged: bloc.changeUserName,
@@ -130,7 +130,7 @@ class RegiterationScreen extends StatelessWidget {
                 border: InputBorder.none,
                 labelText: 'Password',
                 hintText: '*****',
-                errorText: snapshot.hasError ? snapshot.error : '',
+                errorText: snapshot.hasError ? snapshot.error.toString() : '',
                 errorStyle: TextStyle(color: Colors.blueGrey),
               ),
               onChanged: bloc.changePassword,
