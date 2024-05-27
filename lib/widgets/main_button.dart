@@ -10,6 +10,7 @@ class MainButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20),
       alignment: Alignment.center,
       height: 50,
       decoration: BoxDecoration(
@@ -19,10 +20,15 @@ class MainButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             // : BorderRadius.circular(30.0),
             backgroundColor: Colors.grey[700],
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10)))
           ),
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
+          child: Container(
+            width: double.infinity,
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           onPressed: () {
             onPress();

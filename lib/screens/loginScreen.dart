@@ -13,11 +13,12 @@ class LoginScreen extends StatelessWidget {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.grey[800],
-          title: Text('Login Screen'),
+          title: Text('Login Screen',style: TextStyle(color: Colors.white),),
           leading: BackButton(
             onPressed: () {
               Navigator.pushNamed(context, '/');
             },
+            color: Colors.white,
           ),
         ),
         body: ListView(
@@ -62,7 +63,7 @@ class LoginScreen extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: Colors.blue[50],
-              borderRadius: BorderRadius.circular(40.0),
+              borderRadius: BorderRadius.circular(15.0),
               // border: Border.all(
               //   width: 2.0,
               //   color: Colors.black,
@@ -70,8 +71,8 @@ class LoginScreen extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
+                  spreadRadius: 2,
+                  blurRadius: 5,
                   offset: Offset(0, 3), // changes position of shadow
                 ),
               ],
@@ -101,7 +102,7 @@ class LoginScreen extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: Colors.blue[50],
-              borderRadius: BorderRadius.circular(40.0),
+              borderRadius: BorderRadius.circular(15.0),
               // border: Border.all(
               //   width: 1.5,
               //   color: Colors.black,
@@ -109,8 +110,8 @@ class LoginScreen extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
+                  spreadRadius: 2,
+                  blurRadius: 5,
                   offset: Offset(0, 3), // changes position of shadow
                 ),
               ],
@@ -125,21 +126,27 @@ class LoginScreen extends StatelessWidget {
       builder: (context, AsyncSnapshot<bool> snapshot) {
         return Container(
           margin: EdgeInsets.symmetric(horizontal: 80.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 3,
-                offset: Offset(0, 3), // changes position of shadow
-              ),
-            ],
-          ),
-          child: CupertinoButton(
-            borderRadius: BorderRadius.circular(30.0),
-            color: Colors.grey[700],
-            child: Text('Login'),
+          // decoration: BoxDecoration(
+          //   borderRadius: BorderRadius.circular(10.0),
+          //   boxShadow: [
+          //     BoxShadow(
+          //       color: Colors.grey.withOpacity(0.5),
+          //       spreadRadius: 2,
+          //       blurRadius: 3,
+          //       offset: Offset(0, 3), // changes position of shadow
+          //     ),
+          //   ],
+          // ),
+          child: ElevatedButton(
+            // borderRadius: BorderRadius.circular(10.0),
+            // color: Colors.grey[700],
+            // disabledColor: Colors.grey.shade400,
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+              backgroundColor: Colors.grey[700],
+              disabledBackgroundColor: Colors.grey.shade400,
+            ),
+            child: Text('Login',style: TextStyle(color: Colors.white),),
             onPressed: !snapshot.hasData
                 ? null
                 : () async {

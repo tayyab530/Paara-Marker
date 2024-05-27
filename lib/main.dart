@@ -12,8 +12,6 @@ void main() async{
 
   // const AndroidInitializationSettings initializationSettingsAndroid =
   //     AndroidInitializationSettings('app_icon');
-  
-  
 
       
   await Firebase.initializeApp();

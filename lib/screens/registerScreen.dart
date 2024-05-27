@@ -17,11 +17,12 @@ class RegiterationScreen extends StatelessWidget {
           automaticallyImplyLeading: false,
 
           backgroundColor: Colors.grey[800],
-          title: Text('Registeration Screen'),
+          title: Text('Registeration Screen',style: TextStyle(color: Colors.white),),
           leading: BackButton(
             onPressed: () {
               Navigator.pushNamed(context, '/');
             },
+            color: Colors.white,
           ),
         ),
         body: ListView(
@@ -61,7 +62,7 @@ class RegiterationScreen extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: Colors.blue[50],
-              borderRadius: BorderRadius.circular(40.0),
+              borderRadius: BorderRadius.circular(15.0),
               // border: Border.all(
               //   width: 2.0,
               //   color: Colors.black,
@@ -69,8 +70,8 @@ class RegiterationScreen extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
+                  spreadRadius: 2,
+                  blurRadius: 5,
                   offset: Offset(0, 3), // changes position of shadow
                 ),
               ],
@@ -99,7 +100,7 @@ class RegiterationScreen extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: Colors.blue[50],
-              borderRadius: BorderRadius.circular(40.0),
+              borderRadius: BorderRadius.circular(15.0),
               // border: Border.all(
               //   width: 2.0,
               //   color: Colors.black,
@@ -107,8 +108,8 @@ class RegiterationScreen extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
+                  spreadRadius: 2,
+                  blurRadius: 5,
                   offset: Offset(0, 3), // changes position of shadow
                 ),
               ],
@@ -137,7 +138,7 @@ class RegiterationScreen extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: Colors.blue[50],
-              borderRadius: BorderRadius.circular(40.0),
+              borderRadius: BorderRadius.circular(15.0),
               // border: Border.all(
               //   width: 2.0,
               //   color: Colors.black,
@@ -145,8 +146,8 @@ class RegiterationScreen extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
+                  spreadRadius: 2,
+                  blurRadius: 5,
                   offset: Offset(0, 3), // changes position of shadow
                 ),
               ],
@@ -160,22 +161,14 @@ class RegiterationScreen extends StatelessWidget {
         stream: bloc.submitForReg,
         builder: (context, AsyncSnapshot<bool> snapshot) {
           return Container(
-             margin: EdgeInsets.symmetric(horizontal: 80.0),
-             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30.0),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 2,
-                  blurRadius: 3,
-                  offset: Offset(0, 3), // changes position of shadow
-                ),
-              ],
-            ),
-            child: CupertinoButton(
-              borderRadius: BorderRadius.circular(30.0),
-             color: Colors.grey[700],
-              child: Text('Register'),
+            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.2),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0),),
+                disabledBackgroundColor: Colors.grey[400],
+                backgroundColor: Colors.grey[700],
+              ),
+              child: Text('Register',style: TextStyle(color: Colors.white),),
               onPressed: !snapshot.hasData
                   ? null
                   : () async {
